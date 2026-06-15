@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  tests:
+    build: .
+    container_name: serverest_tests
+    volumes:
+      - .:/app
+    command: pytest -v --cov=tests
