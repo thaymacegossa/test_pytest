@@ -35,6 +35,6 @@ def test_get_product_by_invalid_id(base_url):
 
     response = requests.get(f"{base_url}/produtos/{invalid_id}")
 
-    assert response.status_code == 404
+    assert response.status_code == 400
     response_data = response.json()
     assert "message" in response_data
