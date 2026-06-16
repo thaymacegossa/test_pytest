@@ -2,8 +2,32 @@ version: '3.8'
 
 services:
   tests:
-    build: .
+    # Nome único do serviço
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: serverest_tests
+     
+    # Volumes para código e relatórios
     volumes:
       - .:/app
-    command: pytest -v --cov=tests
+      - ./coverage_reports:/app/coverage_reports
+    
+    # Comando padrão (pode ser sobrescrito)
+    command: pytest -v --cov=tests --cov-report=html:/app/coverage_reports --cov-report=term-missing
+    
+    # Política de restart
+    restart: "no"
+    
+    # Limites de recursos (opcional, comentado)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '1'
+    #       memory: 512M
+
+# Configurações globais
+networks:
+  default:
+    name: test_network
+    driver: bridge
