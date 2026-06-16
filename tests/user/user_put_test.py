@@ -48,7 +48,7 @@ def test_update_user_with_invalid_id_creates_new_user(base_url):
 	response = requests.delete(f"{base_url}/usuarios/{invalid_id}")
 	response = requests.put(
 		f"{base_url}/usuarios/{invalid_id}",
-		json={"nome": "Nome Inválido", "email": "inv@example.com", "password": "teste123", "administrador": "false"}
+		json={"nome": "Nome Inválido", "email": f"{int((time.time() * 1000)+1)}@example.com", "password": "teste123", "administrador": "false"}
 	)
 
 	assert response.status_code ==201
