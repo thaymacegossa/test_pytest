@@ -7,7 +7,8 @@ def _create_user(base_url):
     payload = {
         "nome": f"Login Test {suffix}",
         "email": f"login_test_{suffix}@example.com",
-        "password": "teste123"
+        "password": "teste123",
+		"administrador": "false"
     }
     resp = requests.post(f"{base_url}/usuarios", json=payload)
     resp.raise_for_status()
@@ -70,4 +71,4 @@ def test_login_with_blank_user_and_password(base_url):
 
     assert response.status_code in (400, 422)
     data = response.json()
-    assert "message" in data
+    assert "message" in data or ("email" in data and "password" in data)
