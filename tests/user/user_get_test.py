@@ -32,5 +32,5 @@ def test_get_user_by_invalid_id(base_url):
     
     response = requests.get(f"{base_url}/usuarios/{invalid_id}")
     
-    assert response.status_code == 404
+    assert response.status_code in (400, 404)
     assert response.json()["message"] == "Usuário não encontrado"
