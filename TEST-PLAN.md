@@ -1,4 +1,4 @@
-# 📋 Automated Test Plan — Project test_pytest
+# 📋 Automated Test Plan — Project Python with Pytest
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python Version" />
